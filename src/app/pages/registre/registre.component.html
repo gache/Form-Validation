@@ -1,29 +1,29 @@
 <div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100 p-t-50 p-b-90">
-            <form class="login100-form validate-form flex-sb flex-w">
-
+            <!--avec le formsModule importer j'appelle ngSubmit  et lui appelle à ma methode onSubmit()  -->
+            <form (ngSubmit)="onSubmit()" class="login100-form validate-form flex-sb flex-w">
                 <span class="login100-form-title p-b-51">
           Creer un nouveau compte
         </span>
 
                 <!-- <span class="text-danger">Le courrier est obligatoire </span> -->
                 <div class="wrap-input100 m-b-16">
-                    <input class="input100" type="text" name="email" placeholder="Email">
+                    <input class="input100" type="text" name="email" placeholder="Email" [(ngModel)]="utilisateur.email">
 
                     <span class="focus-input100"></span>
                 </div>
 
                 <!-- <span class="text-danger">Le prenom est obligatoire</span> -->
                 <div class="wrap-input100 m-b-16">
-                    <input class="input100" type="text" name="nom" placeholder="Nom et Prénom">
+                    <input class="input100" type="text" name="nom" placeholder="Nom et Prénom" [(ngModel)]="utilisateur.nom">
 
                     <span class="focus-input100"></span>
                 </div>
 
                 <!-- <span class="text-danger"> le password doit y avoir minimun six lettre</span> -->
                 <div class="wrap-input100 m-b-16" data-validate="Password is required">
-                    <input class="input100" type="password" name="password" placeholder="Password">
+                    <input class="input100" type="password" name="password" placeholder="Password" [(ngModel)]="utilisateur.passaword">
                     <span class="focus-input100"></span>
                 </div>
 
