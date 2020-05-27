@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UtilisateurModel } from '../../models/utilisateur.model';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-registre',
@@ -15,14 +16,19 @@ export class RegistreComponent implements OnInit {
   ngOnInit() {
     // itilalisation de ma proproété utilisateur
     this.utilisateur = new UtilisateurModel();
-    this.utilisateur.email = "erickfrancodelgado@hotmail.com"
+    this.utilisateur.email = 'erickfrancodelgado@hotmail.com';
 
 
   }
 
-  onSubmit() {
+  onSubmit(form: NgForm) {
+
+    if (form.invalid ) {
+        return;
+    }
     console.log('formulaire envoyé');
     console.log(this.utilisateur);
+    console.log(form);
 
 
   }
