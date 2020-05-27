@@ -16,9 +16,6 @@ export class RegistreComponent implements OnInit {
   ngOnInit() {
     // itilalisation de ma proproété utilisateur
     this.utilisateur = new UtilisateurModel();
-    this.utilisateur.email = 'erickfrancodelgado@hotmail.com';
-
-
   }
 
   onSubmit(form: NgForm) {
@@ -26,9 +23,7 @@ export class RegistreComponent implements OnInit {
     if (form.invalid ) {
         return;
     }
-    console.log('formulaire envoyé');
-    console.log(this.utilisateur);
-    console.log(form);
+
 
 
   }

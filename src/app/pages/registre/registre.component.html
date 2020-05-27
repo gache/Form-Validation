@@ -7,21 +7,21 @@
           Creer un nouveau compte
         </span>
 
-                <!-- <span class="text-danger">Le courrier est obligatoire </span> -->
+                <span *ngIf="f.submitted && f.controls['email'].errors " class="text-danger animated fadeIn">Le courrier est obligatoire </span>
                 <div class="wrap-input100 m-b-16">
                     <input class="input100" type="email" name="email" placeholder="Email" [(ngModel)]="utilisateur.email" required email>
 
                     <span class="focus-input100"></span>
                 </div>
 
-                <!-- <span class="text-danger">Le prenom est obligatoire</span> -->
+                <span *ngIf="f.submitted && f.controls['nom'].errors" class="text-danger">Le prenom est obligatoire</span>
                 <div class="wrap-input100 m-b-16">
                     <input class="input100" type="text" name="nom" placeholder="Nom et Prénom" [(ngModel)]="utilisateur.nom" required minlength="2">
 
                     <span class="focus-input100"></span>
                 </div>
 
-                <!-- <span class="text-danger"> le password doit y avoir minimun six lettre</span> -->
+                <span  *ngIf="f.submitted && f.controls['password'].errors" class="text-danger"> le password doit y avoir minimun six lettre</span>
                 <div class="wrap-input100 m-b-16" data-validate="Password is required">
                     <input class="input100" type="password" name="password" placeholder="Password" [(ngModel)]="utilisateur.passaword" required minlength="6">
                     <span class="focus-input100"></span>
