@@ -28,13 +28,13 @@ export class AuthService {
 
   }
 
-  nouveauUtilisateur( utilisateur: UtilisateurModel ) {
+  nouveauUtilisateur ( utilisateur: UtilisateurModel ) {
     const autData = {
       email: utilisateur.email,
       password: utilisateur.passaword,
       returnSecureToken: true
     };
-    return this.http.post( `${ this.URL }:signUp?key=${ this.apyKey }`, autData );
+    return this.http.post( `${this.URL}:signUp?key=${this.apyKey}`, autData );
   }
 
 }
