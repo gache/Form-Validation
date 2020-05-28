@@ -14,22 +14,18 @@ export class RegistreComponent implements OnInit {
 
   constructor( private authService: AuthService ) { }
 
-  ngOnInit () {
-    // itilalisation de ma proproété utilisateur
+  ngOnInit() {
+    // initilalisation de ma propriété utilisateur
     this.utilisateur = new UtilisateurModel();
   }
 
-  onSubmit ( form: NgForm ) {
-
+  onSubmit( form: NgForm ) {
     if ( form.invalid ) {
-      this.authService.nouveauUtilisateur( this.utilisateur )
-        .subscribe( resp => {
-          console.log( resp );
-
-        } );
+      return;
     }
-
-
+    this.authService.nouveauUtilisateur(this.utilisateur).subscribe(resp => {
+      console.log(resp);
+    });
 
   }
 

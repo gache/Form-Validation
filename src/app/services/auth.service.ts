@@ -8,7 +8,7 @@ import { UtilisateurModel } from '../models/utilisateur.model';
 } )
 export class AuthService {
 
-  private URL = 'https://identitytoolkit.googleapis.com/v1';
+  private URL = 'https://identitytoolkit.googleapis.com/v1/accounts';
 
   private apyKey = 'AIzaSyBqGjdTemKbADGVbslgRU3FS2hSmyoZE74';
 
@@ -28,16 +28,13 @@ export class AuthService {
 
   }
 
-  nouveauUtilisateur ( utilisateur: UtilisateurModel ) {
+  nouveauUtilisateur( utilisateur: UtilisateurModel ) {
     const autData = {
       email: utilisateur.email,
       password: utilisateur.passaword,
       returnSecureToken: true
     };
-
-    return this.http.post( `${this.URL}` / accounts: signUpkey = ${ this.apyKey }, autData );
-
-
+    return this.http.post( `${ this.URL }:signUp?key=${ this.apyKey }`, autData );
   }
 
 }
