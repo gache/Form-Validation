@@ -20,12 +20,17 @@ export class AuthService {
 
   constructor( private http: HttpClient ) { }
 
-  logOut () {
+  logOut ( utilisateur: UtilisateurModel ) {
 
   }
 
   login ( utilisateur: UtilisateurModel ) {
-
+    const autData = {
+      email: utilisateur.email,
+      password: utilisateur.passaword,
+      returnSecureToken: true
+    };
+    return this.http.post( `${this.URL}:signInWithPassword?key=${this.apyKey}`, autData );
   }
 
   nouveauUtilisateur ( utilisateur: UtilisateurModel ) {
