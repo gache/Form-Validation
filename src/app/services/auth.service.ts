@@ -25,7 +25,7 @@ export class AuthService {
   constructor(private http: HttpClient) {
     this.lireToken();
   }
-//  pour fermer la session
+  //  pour fermer la session
   logOut() {
     localStorage.removeItem('token');
   }
@@ -63,6 +63,11 @@ export class AuthService {
     this.userToken = idToken;
     localStorage.setItem('token', idToken);
 
+    let today = new Date();
+    today.setSeconds(3600);
+
+    localStorage.setItem('expire', today.getTime().toString());
+
   }
 
 
@@ -79,7 +84,19 @@ export class AuthService {
   }
 
   utilisateruAuthentifier(): boolean {
-    return this.userToken.length > 2;
+    if (this.userToken.length < 2) {
+      return false;
+    }
+
+    const expire = Number(localStorage.getItem('expire'));
+    const expireDate = new Date();
+    expireDate.setTime(expire);
+
+    if (expireDate > new Date()) {
+      return true;
+    } else {
+      return  false;
+    }
   }
 
 
