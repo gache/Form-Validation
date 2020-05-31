@@ -78,4 +78,9 @@ export class AuthService {
     return this.userToken;
   }
 
+utilisateruAuthentifier(): boolean {
+  return this.userToken.length > 2;
+}
+
+
 }
