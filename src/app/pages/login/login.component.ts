@@ -17,12 +17,17 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   utilisateur: UtilisateurModel = new UtilisateurModel();
+  rappeler = false;
 
 
   constructor( private httpService: AuthService,
                private router: Router ) { }
 
-  ngOnInit () {
+  ngOnInit() {
+    if  (localStorage.getItem('email')) {
+      this.utilisateur.email = localStorage.getItem('email');
+      this.rappeler = true;
+    }
   }
 
   UtilisateurLogin ( form: NgForm ) {
@@ -43,6 +48,11 @@ export class LoginComponent implements OnInit {
         console.log( resp );
         Swal.close(); /* pour fermer la fênetre d'information */
 //  navigation
+//  si le mail et le pssword sont correctes
+        if  (this.rappeler) {
+        localStorage.setItem('email', this.utilisateur.email);
+      }
+
         this.router.navigateByUrl('/home');
       }, ( err ) => {
         console.log( err.error.error.message );

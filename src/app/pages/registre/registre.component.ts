@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 export class RegistreComponent implements OnInit {
   //  Propriété
   utilisateur: UtilisateurModel;
+  rappeler = false;
 
   constructor( private authService: AuthService,
               private router: Router ) { }
@@ -37,7 +38,11 @@ export class RegistreComponent implements OnInit {
     this.authService.nouveauUtilisateur( this.utilisateur ).subscribe( resp => {
       console.log( resp );
       Swal.close();
-//  navigation
+
+      if  (this.rappeler) {
+        localStorage.setItem('email', this.utilisateur.email);
+      }
+//  navigation vers la page home
       this.router.navigateByUrl('/home');
 
     }, ( err ) => {
